@@ -1,0 +1,22 @@
+// proto的注释使用C风格的//和/*...*/，同Go.
+
+// 协议版本，必须是proto文件中的首行(注释和空行不算)，如不写默认使用proto2版本
+// 由于proto3中删减了一些字段修饰词，因此看起来更简洁些，本文不讲proto2
+syntax = "proto3";
+
+// 冒号左侧表示protoc生成的.go文件相对于指定的--go_out的位置(go_out我一般指定./user)，冒号右侧表示生成的go文件包名
+// 我这边执行protoc都是在windows开发环境，osx和linux未实测，灵活变通即可，有时候可能不需要添加option go_package
+option go_package = "./;protos";
+
+
+// 消息结构体
+message User {
+  string name = 1;
+  int64 id = 2;
+}
+
+
+service UserService {
+  rpc getUsersInfo (User) returns (User) {
+  }
+}
