@@ -24,7 +24,7 @@ func Fail2(r *ghttp.Request, err *uerrors.VideoTranslateErr) {
 		Data: struct {
 		}{},
 	})
-	r.Response.WriteExit()
+	//r.Response.WriteExit()
 }
 
 func Success(r *ghttp.Request, v any) {
@@ -33,7 +33,7 @@ func Success(r *ghttp.Request, v any) {
 		Msg:  "ok",
 		Data: v,
 	})
-	r.Response.WriteExit()
+	//r.Response.WriteExit()
 }
 
 func ParseJsonReq(r *ghttp.Request, v any) error {

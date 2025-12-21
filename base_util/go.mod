@@ -3,11 +3,13 @@ module base_util
 go 1.25.4
 
 require (
+	github.com/afex/hystrix-go v0.0.0-20180502004556-fa1af6a1f4f5
 	github.com/gogf/gf/v2 v2.9.6
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/uber/jaeger-lib v2.4.1+incompatible
+	golang.org/x/time v0.14.0
 	google.golang.org/grpc v1.77.0
 )
 
@@ -32,6 +34,7 @@ require (
 	github.com/olekukonko/tablewriter v1.1.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/smartystreets/goconvey v1.8.1 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/otel v1.38.0 // indirect
 	go.opentelemetry.io/otel/metric v1.38.0 // indirect

@@ -11,7 +11,7 @@ import (
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
-	"github.com/google/uuid"
+	"github.com/gogf/gf/v2/os/gctx"
 	"github.com/opentracing/opentracing-go"
 	"google.golang.org/grpc/metadata"
 )
@@ -25,10 +25,17 @@ func CreateOrder(r *ghttp.Request) {
 	err := common.ParseJsonReq(r, req)
 	if err != nil {
 		r.SetError(err)
+		g.Log().Errorf(r.Context(), "ParseJsonReq failed: %v", err)
 		return
 	}
 
-	traceId := uuid.New().String()
+	ctxId := gctx.CtxId(r.GetCtx())
+	traceId, ok := r.GetCtx().Value("x-request-id").(string)
+	if !ok {
+		traceId = ""
+	}
+	g.Log().Infof(r.GetCtx(), "ctxId: %s, traceId: %s", ctxId, traceId)
+	//traceId := uuid.New().String()
 	span.SetBaggageItem("trace_id", traceId)
 	span.SetBaggageItem("user_id", strconv.FormatInt(req.UserID, 10))
 

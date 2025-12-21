@@ -11,6 +11,7 @@ import (
 	"github.com/gogf/gf/v2/os/gctx"
 
 	"base_util/consts"
+	"base_util/limits"
 	"base_util/mw"
 	"base_util/trace"
 )
@@ -22,6 +23,8 @@ func main() {
 		panic(err)
 	}
 	defer closer.Close()
+	// 初始化限流器
+	limits.InitLimiter()
 
 	cmd.Run(gctx.GetInitCtx())
 }
@@ -32,7 +35,10 @@ var cmd = gcmd.Command{
 	Brief: "start http server",
 	Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
 		s := g.Server()
+		//s.Use(mw.MiddlewareRateLimiter)
+		s.Use(mw.MiddlewareLimiter)
 		s.Use(mw.MiddlewareHandlerResponse)
+		s.Use(mw.InjectDefaultHeaderMW)
 		s.Group("/v1", func(group *ghttp.RouterGroup) {
 			group.Middleware(middlewareCORS)
 			group.POST("/order", order.CreateOrder)
