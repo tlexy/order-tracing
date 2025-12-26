@@ -4,7 +4,9 @@ go 1.25.4
 
 require (
 	github.com/gogf/gf/v2 v2.9.6
+	github.com/nicksnyder/go-i18n/v2 v2.6.0
 	github.com/opentracing/opentracing-go v1.2.0
+	golang.org/x/text v0.30.0
 	google.golang.org/grpc v1.77.0
 )
 
@@ -34,6 +36,5 @@ require (
 	go.opentelemetry.io/otel/trace v1.38.0 // indirect
 	golang.org/x/net v0.46.1-0.20251013234738-63d1a5100f82 // indirect
 	golang.org/x/sys v0.37.0 // indirect
-	golang.org/x/text v0.30.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

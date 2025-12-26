@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	i18n_demo "ordersvc/internal/controller/i18n-demo"
 	"ordersvc/internal/controller/order"
 	"time"
 
@@ -14,6 +15,8 @@ import (
 	"base_util/limits"
 	"base_util/mw"
 	"base_util/trace"
+
+	_ "ordersvc/internal/locales"
 )
 
 func main() {
@@ -42,6 +45,7 @@ var cmd = gcmd.Command{
 		s.Group("/v1", func(group *ghttp.RouterGroup) {
 			group.Middleware(middlewareCORS)
 			group.POST("/order", order.CreateOrder)
+			group.POST("/i18n/:lang", i18n_demo.GetI18n)
 		})
 		s.BindHandler("/health", func(r *ghttp.Request) {
 			r.Response.Write("ok")

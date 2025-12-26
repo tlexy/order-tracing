@@ -1,0 +1,5 @@
+[order.SkuNotExist]
+other="product {{.ProductID}} does not exist"
+
+[order.ServerError]
+other="server internal error"

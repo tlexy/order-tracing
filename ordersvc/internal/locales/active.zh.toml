@@ -1,0 +1,5 @@
+[order.SkuNotExist]
+other="商品 {{.ProductID}} 不存在"
+
+[order.ServerError]
+other="商品服务出错"
